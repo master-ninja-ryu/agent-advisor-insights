@@ -1,9 +1,14 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const CTA = () => {
+  const navigate = useNavigate();
+  const handleFreeTrialClick = () => {
+    navigate('/stock-analysis');
+  };
+
   return (
     <section className="py-16 bg-gradient-to-br from-brand-blue to-brand-purple text-white">
       <div className="container px-4 mx-auto text-center">
@@ -11,7 +16,10 @@ const CTA = () => {
         <p className="text-xl mb-8 max-w-2xl mx-auto">
           加入虚拟对冲基金，利用多智能体协同分析，让您的投资决策更加智能、精准
         </p>
-        <Button className="bg-white text-brand-blue hover:bg-gray-100 text-lg px-8 py-6">
+        <Button
+          onClick={handleFreeTrialClick}
+          className="bg-white text-brand-blue hover:bg-gray-100 text-lg px-8 py-6"
+        >
           立即免费体验
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>

@@ -27,6 +27,10 @@ const Navbar = () => {
     navigate('/dashboard');
   };
 
+  const handleGoToStockAnalysis = () => {
+    navigate('/stock-analysis');
+  };
+
   const isDashboard = location.pathname === '/dashboard';
 
   return (
@@ -38,8 +42,16 @@ const Navbar = () => {
               className="text-xl font-bold text-brand-blue cursor-pointer hover:text-blue-700"
               onClick={() => navigate('/')}
             >
-              AI Hedge
+              AI巴菲特
             </span>
+            <div className="ml-10 hidden md:flex space-x-4">
+              <span 
+                className="text-gray-600 hover:text-brand-blue cursor-pointer"
+                onClick={handleGoToStockAnalysis}
+              >
+                数字货币/股票/金融产品分析
+              </span>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             {isLoggedIn ? (

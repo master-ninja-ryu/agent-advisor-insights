@@ -15,7 +15,7 @@ const features = [
   },
   {
     title: "技术面分析",
-    description: "通过先进算法分析股票价格走势、成交量等技术指标，预测价格变动。",
+    description: "通过先进算法分析数字货币/股票/金融产品价格走势、成交量等技术指标，预测价格变动。",
     icon: <ChartBar className="h-8 w-8 text-brand-red" />
   },
   {
