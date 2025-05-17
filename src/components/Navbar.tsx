@@ -37,6 +37,10 @@ const Navbar = () => {
     navigate('/dashboard');
   };
 
+  const handleGoToStockAnalysis = () => {
+    navigate('/stock-analysis');
+  };
+
   const isDashboard = location.pathname === '/dashboard';
 
   return (
@@ -50,6 +54,14 @@ const Navbar = () => {
             >
               AI Buffett
             </span>
+            <div className="ml-10 hidden md:flex space-x-4">
+              <span 
+                className="text-gray-600 hover:text-brand-blue cursor-pointer"
+                onClick={handleGoToStockAnalysis}
+              >
+                数字货币/股票/金融产品分析
+              </span>
+            </div>
           </div>
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-4">

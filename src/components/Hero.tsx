@@ -1,33 +1,39 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
+  const handleStartInvesting = () => {
+    navigate('/stock-analysis');
+  };
+
   return (
     <section className="pt-24 pb-16">
       <div className="container px-4 mx-auto">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0">
+        <div className="flex flex-col items-center">
+          <div className="w-full text-center mb-10">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-              <span className="text-brand-blue">AI驱动</span>的投资决策，<br/>
-              <span className="text-brand-green">智能预测</span>助力投资未来
+              <span className="text-brand-blue">AI驱动</span>的投资决策，<br className="mb-4"/>
+              <span className="text-brand-green mt-6 inline-block">智能预测</span>助力投资未来
             </h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
               我们的产品通过多个AI智能体协同工作，模拟虚拟对冲基金，
               为您提供基于数据的实时投资建议。
             </p>
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button className="bg-brand-blue text-white hover:bg-blue-700 px-6 py-6">
+            <div className="flex justify-center">
+              <Button 
+                className="bg-brand-blue text-white hover:bg-blue-700 px-6 py-6"
+                onClick={handleStartInvesting}
+              >
                 开始投资之旅
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white px-6 py-6">
-                了解更多
-              </Button>
             </div>
           </div>
-          <div className="lg:w-1/2">
+          <div className="w-full max-w-3xl">
             <div className="relative">
               <div className="w-full h-72 lg:h-96 bg-gradient-to-br from-brand-blue/10 to-brand-green/10 rounded-2xl flex items-center justify-center relative">
                 <div className="absolute w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center animate-float top-12 left-12 z-10">
