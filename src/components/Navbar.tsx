@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from '@/store/auth';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi';
 
 const Navbar = () => {
   const { isLoggedIn, login, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
+  const { address, isConnected } = useAccount();
+  
+  // 当钱包连接状态改变时更新认证状态
+  useEffect(() => {
+    if (isConnected && address && !isLoggedIn) {
+      login();
+    } else if (!isConnected && isLoggedIn) {
+      logout();
+    }
+  }, [isConnected, address, isLoggedIn, login, logout]);
 
   const handleAuth = () => {
+    // 钱包连接/断开连接由 RainbowKit 处理
+    // 登录后导航到仪表板
     if (isLoggedIn) {
-      logout();
-      navigate('/');
-    } else {
-      login();
       navigate('/dashboard');
     }
   };
@@ -42,34 +52,19 @@ const Navbar = () => {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            {isLoggedIn ? (
-              <>
-                {!isDashboard && (
-                  <Button 
-                    variant="outline" 
-                    className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
-                    onClick={handleGoToDashboard}
-                  >
-                    进入仪表板
-                  </Button>
-                )}
+            <div className="flex items-center space-x-4">
+              <ConnectButton />
+              
+              {isLoggedIn && !isDashboard && (
                 <Button 
                   variant="outline" 
-                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
-                  onClick={handleLogout}
+                  className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white ml-2"
+                  onClick={handleGoToDashboard}
                 >
-                  登出
+                  进入仪表板
                 </Button>
-              </>
-            ) : (
-              <Button 
-                variant="outline" 
-                className="border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white"
-                onClick={handleAuth}
-              >
-                钱包登录
-              </Button>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
