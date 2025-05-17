@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">AI Hedge</h3>
+            <h3 className="text-xl font-bold mb-4">AI Buffett</h3>
             <p className="text-gray-400">
               由多个AI智能体协同工作的虚拟对冲基金，为您提供精准的投资决策建议。
             </p>
@@ -42,7 +42,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between">
           <div className="text-gray-400 mb-4 md:mb-0">
-            © 2025 AI Hedge. 保留所有权利。
+            © 2025 AI Buffett. 保留所有权利。
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-white">隐私政策</a>

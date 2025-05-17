@@ -48,7 +48,7 @@ const Navbar = () => {
               className="text-xl font-bold text-brand-blue cursor-pointer hover:text-blue-700"
               onClick={() => navigate('/')}
             >
-              AI Hedge
+              AI Buffett
             </span>
           </div>
           <div className="flex items-center space-x-4">
